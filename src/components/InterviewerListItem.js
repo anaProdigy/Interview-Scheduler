@@ -4,10 +4,10 @@ import "components/InterviewerListItem.scss";
 
 
 export default function InterviewerListItem(props) {
-  // const dayClass = classNames("day-list__item", {
-  //   "day-list__item--selected": props.selected,
-  //   "day-list__item--full": props.spots === 0
-  // });
+  const interviewersClass = classNames("interviewers__item", {
+    "interviewers__item--selected": props.selected
+    
+  });
 
 
   // const formatSpots = () => {
@@ -22,7 +22,7 @@ export default function InterviewerListItem(props) {
 
 
   return (
-    <li className="interviewers__item" onClick={() => { props.setInterviewer(props.id); }}>
+    <li className={interviewersClass} onClick={() => { props.setInterviewer(props.id); }}>
       <img
         className="interviewers__item-image"
         src={props.avatar}
