@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 
+import Appointment from "components/Appointment";
+//same as =>
+// import Appointment from "components/Appointment/index";
+
 const days = [
   {
     id: 1,
