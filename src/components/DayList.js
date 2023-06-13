@@ -9,13 +9,12 @@ export default function DayList(props) {
    
   return (
       <DayListItem
-      // where itkey is used???
         key = {day.id} 
         name = { day.name } 
         spots = { day.spots } 
-        selected = { day.name === props.day }
-        // why props??
-        setDay = { props.setDay }
+        selected = { day.name === props.value }
+        // why class??????
+        setDay={() => props.onChange(day.name)}
     />
   )
   })
