@@ -159,4 +159,9 @@ storiesOf("Appointment", module)
       student="Lydia Miller-Jones"
       interviewer={interviewer.name}
       onEdit={action("onEdit")} 
-      onDelete={action("onDelete")} />));
+      onDelete={action("onDelete")} />))
+  .add("Confirm", () => (
+    <Confirm
+      message="Delete the appointment?"
+      onConfirm={action("onConfirm")}
+      onCancel={action("onCancel")} />));
