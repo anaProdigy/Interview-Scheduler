@@ -10,17 +10,6 @@ export default function InterviewerListItem(props) {
   });
 
 
-  // const formatSpots = () => {
-  //   if (props.spots === 0) {
-  //     return "no spots remaining";
-  //   }
-  //   if (props.spots === 1) {
-  //     return "1 spot remaining";
-  //   }
-  //   return `${props.spots} spots remaining`;
-  // };
-
-
   return (
     <li className={interviewersClass} onClick={() => { props.setInterviewer(props.id); }}>
       <img
