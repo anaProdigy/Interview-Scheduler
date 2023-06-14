@@ -4,10 +4,8 @@ import React, { useState } from 'react';
 
 export default function Form(props) {
  
-  console.log("line 6", props)
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-
 
   const reset = () => {
     setStudent("");
@@ -20,18 +18,19 @@ export default function Form(props) {
   };
 
 
-
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
             className="appointment__create-input text--semi-bold"
             name="name"
             type="text"
             placeholder="Enter Student Name"
             value={student}
-            onChange={(event) => setStudent(event.target.value)}
+            onChange={(event) => {
+              console.log("Input value:", event.target.value); 
+              setStudent(event.target.value)}}
           />
         </form>
         <InterviewerList
