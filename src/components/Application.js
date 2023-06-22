@@ -60,7 +60,8 @@ export default function Application(props) {
     day: "Monday",
     days: [],
     // you may put the line below, but will have to remove/comment hardcoded appointments variable
-    appointments: {}
+    appointments: {},
+    interviewrs: []
   });
   
   const dailyAppointments = getAppointmentsForDay(state, state.day);
@@ -74,12 +75,12 @@ export default function Application(props) {
     Promise.all([
       axios.get("/api/days"),
       axios.get("/api/appointments"),
-      // axios.get("/api/interviewrs")
+      axios.get("/api/interviewrs")
     ]).then((all) => {
       console.log(all); // first
       // console.log(all[1]); // second
       // console.log(all[2]); // third
-      setState(prev => ({ ...prev, days: all[0].data,appointments: all[1].data }));
+      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewrs: all[2].data }));
     });
 
 
