@@ -5,6 +5,7 @@ const [mode, setMode] = useState(initial);
 const [history, setHistory] = useState([initial]);
 
   function transition(newMode, replace = false) {
+    console.log("transition")
     setMode(newMode);
     if (replace) {
       setHistory(prevHistory => [...prevHistory.slice(0, -1), newMode]);
