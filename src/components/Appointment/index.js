@@ -5,6 +5,10 @@ import Header from "./Header.js";
 import Empty from "./Empty.js";
 import Show from "./Show.js";
 
+import { useVisualMode } from  "../../hooks/useVisualMode"
+
+const EMPTY = "EMPTY";
+const SHOW = "SHOW";
 
 export default function Appointment(props) {
 console.log("line10", props)
