@@ -48,6 +48,10 @@ export default function Application(props) {
 
   const bookInterview = (id, interview) => {
     console.log("bookInterview App",id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
   }
   
 // console.log("interviewrs", state.interviewers)
