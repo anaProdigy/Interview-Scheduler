@@ -45,6 +45,10 @@ export default function Application(props) {
       setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     });
   }, [])
+
+  const bookInterview = (id, interview) => {
+    console.log(id, interview);
+  }
   
 // console.log("interviewrs", state.interviewers)
   const schedule = dailyAppointments.map((appointment) => {
@@ -57,20 +61,11 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview = {bookInterview}
       />
     );
   });
-  // const appointmentsList = dailyAppointments.map(appointment => (
-  //   <Appointment
-  //      key={appointment.id}
-  //     {...appointment} 
-  //     //OR
-  //     // key={appointment.id}
-  //     // id={appointment.id}
-  //     // time={appointment.time}
-  //     // interview={appointment.interview}
-  //     />
-  //   ));
+
 
   return (
     <main className="layout">
