@@ -7,6 +7,7 @@ import Show from "./Show.js";
 import Form from "./Form.js";
 import Confirm from "./Confirm.js";
 import Status from "./Status.js";
+import Error from "./Error.js";
 
 
 import useVisualMode from "../../hooks/useVisualMode";
@@ -18,6 +19,8 @@ const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRM = "CONFIRM";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
   //console.log("Appointment", props.id)
@@ -33,22 +36,27 @@ export default function Appointment(props) {
     };
     
     transition(SAVING); // Transition to SAVING mode
-    props.bookInterview(props.id, interview)
+    props
+      .bookInterview(props.id, interview)
       .then(() => {
         transition(SHOW);
+      })
+      .catch(error => {
+        transition(ERROR_SAVE,true)
       });
   };
 
-  const cancelInterview = () => {
-    transition(DELETING);
+  const destroy = (event) => {
+    transition(DELETING, true);
     props.cancelInterview(props.id)
       .then(() => {
         transition(EMPTY);
+      })
+      .catch(error => {
+        transition(ERROR_DELETE, true)
       });
-
-
-
   };
+
   return (
     <>
       <article className="appointment">
@@ -81,7 +89,7 @@ export default function Appointment(props) {
         {mode === CONFIRM && (
           <Confirm
             onCancel={back}
-            onConfirm={() => { cancelInterview()}}
+            onConfirm={() => { destroy()}}
             message={"are you sure?"} />
         )}
         {mode === EDIT && (
@@ -92,6 +100,13 @@ export default function Appointment(props) {
             onCancel={back}
             onSave={save} />
         )}
+        {mode === ERROR_SAVE &&(
+          <Error message={"Cudnt save"} onClose={back} />
+        )}
+        {mode === ERROR_DELETE && (
+          <Error message={"Cudnt delete"} onClose={back} />
+        )}
+
       </article>
     </>
   );

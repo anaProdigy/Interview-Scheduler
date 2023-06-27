@@ -67,9 +67,7 @@ export default function Application(props) {
         });
 
       })
-      .catch(error => {
-        console.log("Error updating appointment:", error);
-      });
+     
   };
 
   const cancelInterview = (id) => {
@@ -89,9 +87,6 @@ export default function Application(props) {
           appointments: canceledAppointments
         })
       })
-      .catch(error => {
-        console.log("Error ucancelling interview:", error);
-      });
   };
 
   // console.log("interviewrs", state.interviewers)
