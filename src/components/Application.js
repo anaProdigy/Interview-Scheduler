@@ -64,11 +64,32 @@ export default function Application(props) {
           ...state,
           appointments
         });
-//??????????????????? need here?
-        // transition(SHOW);
+
       })
       .catch(error => {
         console.log("Error updating appointment:", error);
+      });
+  };
+
+  const cancelInterview = (id) => {
+    console.log("cancelInterview App", id);
+    axios
+      .delete(`/api/appointments/${id}`)
+      .then(response => {
+        const canceledAppointments = {
+          ...state.appointments,
+          [id]: {
+            ...state.appointments[id],
+            interview: null
+          }
+        };
+        setState({
+          ...state,
+          appointments: canceledAppointments
+        })
+      })
+      .catch(error => {
+        console.log("Error ucancelling interview:", error);
       });
   };
 
@@ -84,6 +105,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
