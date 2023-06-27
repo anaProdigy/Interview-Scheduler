@@ -47,7 +47,7 @@ export default function Application(props) {
   }, [])
 
   const bookInterview = (id, interview) => {
-    console.log(id, interview);
+    console.log("bookInterview App",id, interview);
   }
   
 // console.log("interviewrs", state.interviewers)

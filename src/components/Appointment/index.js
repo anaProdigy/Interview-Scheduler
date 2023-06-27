@@ -13,7 +13,7 @@ const SHOW = "SHOW";
 const CREATE = "CREATE";
 
 export default function Appointment(props) {
-  // console.log("line10", props)
+   console.log("Appointment", props)
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -23,7 +23,8 @@ export default function Appointment(props) {
     const interview = {
       student: name,
       interviewer
-    };
+    }
+    props.bookInterview(props.id, interview)
   }
   return (
     <>
