@@ -52,14 +52,15 @@ export default function Application(props) {
       ...state.appointments[id],
       interview: { ...interview }
     };
-
-    axios
-      .put(`/api/appointments/${id}`, appointment)
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+//ALWAYS RETURN IF I WANT TO WAIT FOR PROMISE (on save fn)
+    return axios
+      .put(`/api/appointments/${id}`, {interview})
       .then(response => {
-        const appointments = {
-          ...state.appointments,
-          [id]: appointment
-        };
+        
         setState({
           ...state,
           appointments
@@ -73,7 +74,7 @@ export default function Application(props) {
 
   const cancelInterview = (id) => {
     console.log("cancelInterview App", id);
-    axios
+    return axios
       .delete(`/api/appointments/${id}`)
       .then(response => {
         const canceledAppointments = {
