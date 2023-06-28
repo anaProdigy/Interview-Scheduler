@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "components/Application.scss";
 import DayList from "./DayList";
@@ -136,6 +136,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointments}
+        <Appointment time="5pm"/>
       </section>
     </main>
   );

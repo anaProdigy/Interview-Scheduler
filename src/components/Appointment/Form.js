@@ -3,7 +3,7 @@ import InterviewerList from "components/InterviewerList";
 import React, { useState } from 'react';
 
 export default function Form(props) {
- console.log("form", props)
+ //console.log("form", props)
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
@@ -29,7 +29,7 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             value={student}
             onChange={(event) => {
-              console.log("Input value:", event.target.value); 
+              //console.log("Input value:", event.target.value); 
               setStudent(event.target.value)}}
           />
         </form>

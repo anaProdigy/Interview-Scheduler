@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import axios from "axios";
 
 export default function useApplicationData() {
@@ -29,6 +29,25 @@ export default function useApplicationData() {
   }, []);
 
 
+  const updateSpots = (id, appointments) => {
+    console.log("updateSports", id, appointments);
+    // find a specific day that i m trying to update
+    const day = state.days.find((day) => day.appointments.includes(id));
+    //calculate the num of spots = nulls
+    const spots = day.appointments.filter((appointmentId) => {
+      return appointments[appointmentId].interview === null;
+    });
+    //return updated days
+    const updatedDays = state.days.map((dayObj) => {
+      if (dayObj.appointments.includes(id)) {
+        return { ...dayObj, spots: spots.length };
+      }
+      return dayObj;
+    });
+    return updatedDays;
+  };
+
+
   const bookInterview = (id, interview) => {
     // console.log("bookInterview App",id, interview);
     const appointment = {
@@ -46,7 +65,8 @@ export default function useApplicationData() {
 
         setState({
           ...state,
-          appointments
+          appointments,
+          days: updateSpots(id, appointments)
         });
 
       });
@@ -58,7 +78,7 @@ export default function useApplicationData() {
     return axios
       .delete(`/api/appointments/${id}`)
       .then(response => {
-        const canceledAppointments = {
+        const appointments = {
           ...state.appointments,
           [id]: {
             ...state.appointments[id],
@@ -67,7 +87,8 @@ export default function useApplicationData() {
         };
         setState({
           ...state,
-          appointments: canceledAppointments
+          appointments,
+          days: updateSpots(id, appointments)
         });
       });
   };
@@ -77,8 +98,8 @@ export default function useApplicationData() {
     setDay,
     bookInterview,
     cancelInterview
-  }
-   
-  
+  };
+
+
 }
 
