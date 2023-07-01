@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useReducer, useEffect } from 'react';
+
 import axios from "axios";
 
 export default function useApplicationData() {
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -10,7 +13,7 @@ export default function useApplicationData() {
     interviewers: []
   });
 
-
+//???????????????????????
   const setDay = day => setState({ ...state, day });
 
 
