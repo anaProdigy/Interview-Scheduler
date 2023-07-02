@@ -5,7 +5,7 @@
 The **Interview Scheduler** is a single page app built with [React](https://reactjs.org/) that allows a user to book an appointment with an interviewer.
 
 ## Final product
-![Showing appointments]()
+![Showing appointments](public/final_product.png)
 
 
 
