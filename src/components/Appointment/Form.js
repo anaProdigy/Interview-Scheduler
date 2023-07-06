@@ -3,7 +3,7 @@ import InterviewerList from "components/InterviewerList";
 import React, { useState } from 'react';
 
 export default function Form(props) {
- //console.log("form", props)
+  //console.log("form", props)
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
@@ -27,6 +27,9 @@ export default function Form(props) {
       setError("Please select an interviewer");
       return;
     }
+    
+    setError("");
+
     props.onSave(student, interviewer);
   }
 
@@ -40,20 +43,21 @@ export default function Form(props) {
             name="name"
             type="text"
             placeholder="Enter Student Name"
-           
+
             value={student}
             onChange={(event) => {
               //console.log("Input value:", event.target.value); 
-              setStudent(event.target.value)}}
+              setStudent(event.target.value);
+            }}
             data-testid="student-name-input"
           />
         </form>
         <section className="appointment__validation">{error}</section>
-        
+
         <InterviewerList
           interviewers={props.interviewers}
-        onChange={setInterviewer}
-        interviewer={interviewer}
+          onChange={setInterviewer}
+          interviewer={interviewer}
         />
       </section>
       <section className="appointment__card-right">
