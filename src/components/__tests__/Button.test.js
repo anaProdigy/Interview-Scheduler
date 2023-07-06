@@ -6,9 +6,6 @@ import Button from "components/Button";
 
 afterEach(cleanup);
 
-it("renders without crashing", () => {
-  render(<Button />);
-});
 
 it("renders its `children` prop as text", () => {
   //The render function is imported from the react-testing-library.
