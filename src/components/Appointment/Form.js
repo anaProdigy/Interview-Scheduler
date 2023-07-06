@@ -27,7 +27,7 @@ export default function Form(props) {
       setError("Please select an interviewer");
       return;
     }
-    
+
     setError("");
 
     props.onSave(student, interviewer);
@@ -48,6 +48,7 @@ export default function Form(props) {
             onChange={(event) => {
               //console.log("Input value:", event.target.value); 
               setStudent(event.target.value);
+           
             }}
             data-testid="student-name-input"
           />
@@ -62,7 +63,7 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={props.onCancel} >Cancel</Button>
+          <Button danger onClick={() => cancel()} >Cancel</Button>
           <Button confirm onClick={() => validate()} >Save</Button>
         </section>
       </section>

@@ -33,7 +33,7 @@ export default function useApplicationData() {
 
 
   const updateSpots = (id, appointments) => {
-    console.log("updateSports", id, appointments);
+    //console.log("updateSports", id, appointments);
     // find a specific day that i m trying to update
     const day = state.days.find((day) => day.appointments.includes(id));
     //calculate the num of spots = nulls
