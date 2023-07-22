@@ -51,6 +51,7 @@
     "watchPathIgnorePatterns": [
       "<rootDir>/node_modules/",
       "<rootDir>/.git/"
-    ]
+    ],
+    "resetMocks": false
   }
 }
