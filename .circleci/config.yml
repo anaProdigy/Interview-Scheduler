@@ -19,21 +19,21 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
 
-deploy:
-  machine:
-    enabled: true
+  deploy:
+    machine:
+      enabled: true
 
-  working_directory: ~/client
+    working_directory: ~/client
 
-  steps:
-    - add_ssh_keys:
-        fingerprints:
-          - "cc:03:44:79:09:53:c8:9f:72:a5:e1:14:80:a4:93:fa"
-    - checkout
-    - run:
-        name: Push Master to Production
-        command: |
-          git push https://github.com/anaProdigy/Interview-Scheduler.git master:production
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "cc:03:44:79:09:53:c8:9f:72:a5:e1:14:80:a4:93:fa"
+      - checkout
+      - run:
+          name: Push Master to Production
+          command: |
+             git push https://github.com/anaProdigy/Interview-Scheduler.git master:production
 
 workflows:
   version: 2
