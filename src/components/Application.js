@@ -1,5 +1,5 @@
 import React from "react";
-//test change
+
 import "components/Application.scss";
 import DayList from "./DayList";
 //same as =>
@@ -18,7 +18,6 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
 
- 
   const interviewers = getInterviewersForDay(state, state.day);
 
   const appointments = getAppointmentsForDay(state, state.day).map((appointment) => {
@@ -61,7 +60,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointments}
-        <Appointment time="5pm"/>
+        <Appointment time="5pm" />
       </section>
     </main>
   );

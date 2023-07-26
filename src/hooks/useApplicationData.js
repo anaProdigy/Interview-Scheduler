@@ -32,7 +32,7 @@ export default function useApplicationData() {
 
 
   const updateSpots = (id, appointments) => {
-    //console.log("updateSports", id, appointments);
+  
     // find a specific day that i m trying to update
     const day = state.days.find((day) => day.appointments.includes(id));
     //calculate the num of spots = nulls
@@ -51,7 +51,7 @@ export default function useApplicationData() {
 
 
   const bookInterview = (id, interview) => {
-    // console.log("bookInterview App",id, interview);
+ 
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -76,7 +76,7 @@ export default function useApplicationData() {
   };
 
   const cancelInterview = (id) => {
-    console.log("cancelInterview App", id);
+    
     return axios
       .delete(`/api/appointments/${id}`)
       .then(response => {

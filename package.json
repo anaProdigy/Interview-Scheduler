@@ -8,7 +8,7 @@
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "^5.0.0"
+    "react-scripts": "^3.4.4"
   },
   "proxy": "http://localhost:8001",
   "scripts": {
@@ -42,11 +42,12 @@
     "@storybook/react": "^5.0.10",
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.7",
-    "@testing-library/react-hooks": "^8.0.1",
+    "@testing-library/react-hooks": "^1.1.0",
     "babel-loader": "8.1.0",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^16.9.0",
-    "sass": "^1.53.0"
+    "sass": "^1.53.0",
+    "webpack": "^4.46.0"
   },
   "jest": {
     "watchPathIgnorePatterns": [
