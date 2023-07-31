@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import axios from "axios";
-
+import updateSpots from "../helpers/updateSpots"
 
 export default function useApplicationData() {
 
@@ -14,7 +14,6 @@ export default function useApplicationData() {
   });
 
   const setDay = day => setState({ ...state, day });
-
 
   useEffect(() => {
 
@@ -31,27 +30,11 @@ export default function useApplicationData() {
   }, []);
 
 
-  const updateSpots = (id, appointments) => {
-  
-    // find a specific day that i m trying to update
-    const day = state.days.find((day) => day.appointments.includes(id));
-    //calculate the num of spots = nulls
-    const spots = day.appointments.filter((appointmentId) => {
-      return appointments[appointmentId].interview === null;
-    });
-    //return updated days
-    const updatedDays = state.days.map((dayObj) => {
-      if (dayObj.appointments.includes(id)) {
-        return { ...dayObj, spots: spots.length };
-      }
-      return dayObj;
-    });
-    return updatedDays;
-  };
+
 
 
   const bookInterview = (id, interview) => {
- 
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -76,7 +59,7 @@ export default function useApplicationData() {
   };
 
   const cancelInterview = (id) => {
-    
+
     return axios
       .delete(`/api/appointments/${id}`)
       .then(response => {
@@ -90,7 +73,7 @@ export default function useApplicationData() {
         setState({
           ...state,
           appointments,
-          days: updateSpots(id, appointments)
+          days: updateSpots(id, appointments, state)
         });
       });
   };
