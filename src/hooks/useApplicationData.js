@@ -51,7 +51,7 @@ export default function useApplicationData() {
         setState({
           ...state,
           appointments,
-          days: updateSpots(id, appointments)
+          days: updateSpots(id, appointments, state)
         });
 
       });
